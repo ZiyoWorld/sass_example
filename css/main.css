@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/* But this comment will, except in compressed mode. */
+/* It can also contain interpolation:
+ * 1 + 1 = 2 */
+/*! This comment will be included even in compressed mode. */
+p .sans {
+  font: Helvetica, sans-serif;
+}
+
+@font-face {
+  src: url("../fonts/roboto/Roboto-Thin.woff2") format("woff2");
+  font-family: "Roboto";
+  font-weight: 100;
+}
+@font-face {
+  src: url("roboto-font-path/Roboto-Light.woff2") format("woff2");
+  font-family: "Roboto";
+  font-weight: 300;
+}
+@font-face {
+  src: url(../fonts/roboto/Roboto-Regular.woff2) format("woff2");
+  font-family: "Roboto";
+  font-weight: 400;
+}
+.logo {
+  background: element(logo-bg);
+}
+
+.alert ul, .alert p, .warning ul, .warning p {
+  margin-right: 0;
+  margin-left: 0;
+  padding-bottom: 0;
+}
+
+ul > li {
+  list-style-type: none;
+}
+
+h2 + p {
+  border-top: 1px solid gray;
+}
+
+p ~ span {
+  opacity: 0.8;
+}
+
+span.emoji-women-holding-hands {
+  font-family: IconFont;
+  font-variant: normal;
+  font-weight: normal;
+  content: "👭";
+}
+
+span.email-salom {
+  font-family: IconFont;
+  font-variant: normal;
+  font-weight: 200;
+  content: "😎😢";
+}
+
+.gray {
+  -moz-filter: grayscale(50%);
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
+
+:root {
+  --primary: #81899b;
+  --accent: #302e24;
+  --warn: #dfa612;
+  --consumed-by-js: $primary;
+}
+
+:root {
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas;
+}
+
+.alert:hover {
+  font-weight: bold;
+}
+[dir=rtl] .alert {
+  margin-left: 0;
+  margin-right: 10px;
+}
+:not(.alert) {
+  opacity: 0.8;
+}
+
+.accordion {
+  max-width: 600px;
+  margin: 4rem auto;
+  width: 90%;
+  font-family: "Raleway", sans-serif;
+  background: #f4f4f4;
+}
+.accordion__copy {
+  display: none;
+  padding: 1rem 1.5rem 2rem 1.5rem;
+  color: gray;
+  line-height: 1.6;
+  font-size: 14px;
+  font-weight: 500;
+}
+.accordion__copy--open {
+  display: block;
+}
+
+.wrapper input.field {
+  width: 100%;
+}
+
+.wrapper select.field {
+  /* ... */
+}
+
+.reset-buttons, .action-buttons {
+  box-sizing: border-box;
+  border-top: 1px rgba(0, 0, 0, 0.12) solid;
+  padding: 16px 0;
+  width: 100%;
+}
+.reset-buttons:hover, .action-buttons:hover {
+  border: 2px rgba(0, 0, 0, 0.5) solid;
+}
+
+.action-buttons {
+  color: #4285f4;
+}
+
+.reset-buttons {
+  color: #cddc39;
+}
+
+/*# sourceMappingURL=main.css.map */

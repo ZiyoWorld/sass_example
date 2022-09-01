@@ -1,0 +1,224 @@
+@use "sass:meta";
+$logo-element: logo-bg;
+
+@mixin button-base() {
+    @include typography(button);
+    @include ripple-surface;
+    @include ripple-radius-bounded;
+  
+    display: inline-flex;
+    position: relative;
+    height: $button-height;
+    border: none;
+    vertical-align: middle;
+  
+    &:hover { cursor: pointer; }
+  
+    &:disabled {
+      color: $mdc-button-disabled-ink-color;
+      cursor: default;
+      pointer-events: none;
+    }
+};
+
+// The simplest expressions just represent static values:
+
+// Numbers, which may or may not have units, like 12 or 100px.
+// Strings, which may or may not have quotes, like "Helvetica Neue" or bold.
+// Colors, which can be referred to by their hex representation or by name, like #c6538c or blue.
+// The boolean literals true or false.
+// The singleton null.
+// Lists of values, which may be separated by spaces or commas and which may be enclosed in square brackets or no brackets at all, like 1.5em 1em 0 2em, Helvetica, Arial, sans-serif, or [col1-start].
+// Maps that associate values with keys, like ("background": red, "foreground": pink).
+
+// Comments
+// This comment won't be included in the CSS.
+
+/* But this comment will, except in compressed mode. */
+
+/* It can also contain interpolation:
+ * 1 + 1 = #{1 + 1} */
+
+/*! This comment will be included even in compressed mode. */
+
+p /* Multi-line comments can be written anywhere
+   * whitespace is allowed. */ .sans {
+  font: Helvetica, // So can single-line commments.
+        sans-serif;
+}
+    //   Functions
+/// Computes an exponent.
+///
+/// @param {number} $base
+///   The number to multiply by itself.
+/// @param {integer (unitless)} $exponent
+///   The number of `$base`s to multiply together.
+/// @return {number} `$base` to the power of `$exponent`.
+@function pow($base, $exponent) {
+    $result: 1;
+    @for $_ from 1 through $exponent {
+      $result: $result * $base;
+    }
+    @return $result;
+}
+
+$roboto-font-path: "../fonts/roboto";
+
+@font-face {
+    // This is parsed as a normal function call that takes a quoted string.
+    src: url("#{$roboto-font-path}/Roboto-Thin.woff2") format("woff2");
+
+    font-family: "Roboto";
+    font-weight: 100;
+}
+
+@font-face {
+    // This is parsed as a normal function call that takes an arithmetic
+    // expression.
+    src: url("#{roboto-font-path}/Roboto-Light.woff2") format("woff2");
+
+    font-family: "Roboto";
+    font-weight: 300;
+}
+
+@font-face {
+    // This is parsed as an interpolated special function.
+    src: url(#{$roboto-font-path} + "/Roboto-Regular.woff2") format("woff2");
+
+    font-family: "Roboto";
+    font-weight: 400;
+}
+
+
+.logo {
+  background: element(#{$logo-element});
+}
+
+.alert, .warning {
+    ul, p {
+      margin-right: 0;
+      margin-left: 0;
+      padding-bottom: 0;
+    }
+}
+ul > {
+    li {
+      list-style-type: none;
+    }
+  }
+  
+  h2 {
+    + p {
+      border-top: 1px solid gray;
+    }
+  }
+  
+  p {
+    ~ {
+      span {
+        opacity: 0.8;
+      }
+    }
+}
+
+@mixin define-emoji($name, $glyph) {
+    span.emoji-#{$name} {
+      font-family: IconFont;
+      font-variant: normal;
+      font-weight: normal;
+      content: $glyph;
+    }
+  }
+  
+@include define-emoji("women-holding-hands", "👭");
+
+@mixin add-number($name, $glyph){
+    span.email-#{$name}{
+        font-family: IconFont;
+        font-variant: normal;
+        font-weight: 200;
+        content: $glyph;
+    }
+}
+@include add-number("salom", "😎😢" );
+
+
+// property
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+      -#{$prefix}-#{$property}: $value;
+    }
+    #{$property}: $value;
+  }
+  
+  .gray {
+    @include prefix(filter, grayscale(50%), moz webkit);
+}
+
+$primary: #81899b;
+$accent: #302e24;
+$warn: #dfa612;
+
+
+//  with root element
+:root {
+  --primary: #{$primary};
+  --accent: #{$accent};
+  --warn: #{$warn};
+
+  // Even though this looks like a Sass variable, it's valid CSS so it's not
+  // evaluated.
+  --consumed-by-js: $primary;
+}
+
+
+
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas;
+
+:root {
+  --font-family-sans-serif: #{meta.inspect($font-family-sans-serif)};
+  --font-family-monospace: #{meta.inspect($font-family-monospace)};
+};
+
+.alert {
+    // The parent selector can be used to add pseudo-classes to the outer
+    // selector.
+    &:hover {
+      font-weight: bold;
+    }
+  
+    // It can also be used to style the outer selector in a certain context, such
+    // as a body set to use a right-to-left language.
+    [dir=rtl] & {
+      margin-left: 0;
+      margin-right: 10px;
+    }
+  
+    // You can even use it as an argument to pseudo-class selectors.
+    :not(&) {
+      opacity: 0.8;
+    }
+}
+
+.accordion {
+    max-width: 600px;
+    margin: 4rem auto;
+    width: 90%;
+    font-family: "Raleway", sans-serif;
+    background: #f4f4f4;
+  
+    &__copy {
+      display: none;
+      padding: 1rem 1.5rem 2rem 1.5rem;
+      color: gray;
+      line-height: 1.6;
+      font-size: 14px;
+      font-weight: 500;
+  
+      &--open {
+        display: block;
+      }
+    }
+  }
