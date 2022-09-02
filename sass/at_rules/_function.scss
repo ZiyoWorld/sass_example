@@ -1,0 +1,89 @@
+
+@use "sass:string";
+@namespace svg url("http://www.w3.org/2000/svg");
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+}
+
+@counter-style thumbs {
+  system: cyclic;
+  symbols: "\1F44D";
+}
+
+@function str-insert($string, $insert, $index) {
+  // Avoid making new strings if we don't need to.
+  @if string.length($string) == 0 {
+    @return $insert;
+  }
+
+  $before: string.slice($string, 0, $index);
+  $after: string.slice($string, $index);
+  @return $before + $insert + $after;
+}
+@debug var(--main-bg-color); // var(--main-bg-color)
+
+$primary: #f2ece4;
+$accent: #e1d7d2;
+@debug radial-gradient($primary, $accent); // radial-gradient(#f2ece4, #e1d7d2)
+
+
+
+
+@function pow($base, $exponent) {
+    $result: 1;
+    @for $_ from 1 through $exponent {
+      $result: $result * $base;
+    }
+    @return $result;
+}
+  
+.sidebar {
+    float: left;
+    margin-left: pow(4, 3) * 1px;
+}
+
+@function invert($color, $amount: 100%) {
+    $inverse: change-color($color, $hue: hue($color) + 180);
+    @return mix($inverse, $color, $amount);
+}
+  
+  $primary-color: #036;
+.header {
+    background-color: invert($primary-color, 80%);
+}
+
+.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  
+    &--serious {
+      @extend .error;
+      border-width: 3px;
+    }
+}
+
+$light-background: #f2ece4;
+$light-text: #036;
+$dark-background: #6b717f;
+$dark-text: #d2e1dd;
+
+@mixin theme-colors($light-theme: true) {
+  @if $light-theme {
+    background-color: $light-background;
+    color: $light-text;
+  } @else {
+    background-color: $dark-background;
+    color: $dark-text;
+  }
+}
+
+.banner {
+  @include theme-colors($light-theme: true);
+  body.dark & {
+    @include theme-colors($light-theme: false);
+  }
+}
+
+

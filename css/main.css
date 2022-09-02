@@ -141,11 +141,11 @@ span.email-salom {
 }
 
 .pulse {
-  animation-name: inline-uumf375;
+  animation-name: inline-uumf43r;
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }
-@keyframes inline-uumf375 {
+@keyframes inline-uumf43r {
   from {
     background-color: yellow;
   }
@@ -180,20 +180,77 @@ span.email-salom {
 
 Sass, shuningdek, oddiy CSS at-qoidalari uchun maxsus xatti-harakatlarga ega : ular interpolatsiyani o'z ichiga olishi mumkin va ular uslub qoidalariga joylashtirilishi mumkin. Ulardan ba'zilari, @mediava @supportskabilar, SassScript-ni interpolyatsiyasiz to'g'ridan-to'g'ri qoidaning o'zida ishlatishga imkon beradi.
 */
+.mail-icon {
+  text-indent: -99999em;
+  overflow: hidden;
+  text-align: left;
+  background-image: url("/images/mail.svg");
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+}
+
+input.name {
+  position: absolute;
+  height: 150px;
+  margin-top: 0px;
+}
+
+input.address {
+  position: absolute;
+  height: 150px;
+  margin-top: 150px;
+}
+
+input.zip {
+  position: absolute;
+  height: 150px;
+  margin-top: 300px;
+}
+
+@namespace svg url("http://www.w3.org/2000/svg");
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2");
+}
+@counter-style thumbs {
+  system: cyclic;
+  symbols: "👍";
+}
+.sidebar {
+  float: left;
+  margin-left: 64px;
+}
+
+.header {
+  background-color: #523314;
+}
+
+.error, .error--serious {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.error--serious {
+  border-width: 3px;
+}
+
+.banner {
+  background-color: #f2ece4;
+  color: #036;
+}
+body.dark .banner {
+  background-color: #6b717f;
+  color: #d2e1dd;
+}
+
 .button {
   border-radius: 3px;
   padding: 8px;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-nav ul li {
-  display: inline-block;
-  margin-left: -2px;
-  margin-right: 2em;
 }
 
 /*# sourceMappingURL=main.css.map */

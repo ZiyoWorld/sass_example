@@ -2,31 +2,10 @@
 @use "./syntax/parentSelector";
 @use "./variables/variable.scss";
 @use "./at_rules/rulesall" as c;
+@use "./at_rules/function";
 // style.scss
 
 .button {
   @include c.rounded;
   padding: 5px + c.$radius;
 }
-
-@mixin reset-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  @mixin horizontal-list {
-    @include reset-list;
-  
-    li {
-      display: inline-block;
-      margin: {
-        left: -2px;
-        right: 2em;
-      }
-    }
-  }
-  
-  nav ul {
-    @include horizontal-list;
-  }

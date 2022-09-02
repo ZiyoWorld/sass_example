@@ -32,3 +32,45 @@ $radius: 3px;
 @mixin rounded {
   border-radius: $radius;
 }
+
+@mixin replace-text($image, $x: 50%, $y: 50%) {
+    text-indent: -99999em;
+    overflow: hidden;
+    text-align: left;
+  
+    background: {
+      image: $image;
+      repeat: no-repeat;
+      position: $x $y;
+    }
+  }
+  
+.mail-icon {
+    @include replace-text(url("/images/mail.svg"), 0);
+}
+
+
+@mixin square($size, $radius: 0) {
+    width: $size;
+    height: $size;
+  
+    @if $radius != 0 {
+      border-radius: $radius;
+    }
+  }
+  
+.avatar {
+    @include square(100px, $radius: 4px);
+}
+
+@mixin order($height, $selectors...) {
+    @for $i from 0 to length($selectors) {
+      #{nth($selectors, $i + 1)} {
+        position: absolute;
+        height: $height;
+        margin-top: $i * $height;
+      }
+    }
+  }
+  
+@include order(150px, "input.name", "input.address", "input.zip");
