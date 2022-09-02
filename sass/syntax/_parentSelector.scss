@@ -11,7 +11,7 @@
    width: 100%;
   }
   @include unify-parent("select") {
-    /* ... */
+    height: 100%;
   }
 }
 

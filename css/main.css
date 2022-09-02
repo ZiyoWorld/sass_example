@@ -111,7 +111,7 @@ span.email-salom {
 }
 
 .wrapper select.field {
-  /* ... */
+  height: 100%;
 }
 
 .reset-buttons, .action-buttons {
@@ -130,6 +130,70 @@ span.email-salom {
 
 .reset-buttons {
   color: #cddc39;
+}
+
+.alert {
+  background-color: #ffc107;
+}
+
+.alerts {
+  background-color: #28a745;
+}
+
+.pulse {
+  animation-name: inline-uumf375;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@keyframes inline-uumf375 {
+  from {
+    background-color: yellow;
+  }
+  to {
+    background-color: red;
+  }
+}
+
+/*Sass-ning qo'shimcha funktsiyalarining aksariyati CSS -ga qo'shadigan yangi qoidalar shaklida keladi:
+
+@use boshqa Sass uslublar jadvallaridan mikslar, funktsiyalar va o'zgaruvchilarni yuklaydi va bir nechta uslublar jadvallaridan CSS -NI BIRLASHTIRADI.
+
+@forward @use  Sass uslublar jadvalini yuklaydi va uslublar jadvalingiz qoida bilan yuklanganda uning mikslari, funksiyalari va oʻzgaruvchilari mavjud boʻladi  .
+
+@import  CSS -ni boshqa uslublar jadvallaridan uslublar, miksinlar, funktsiyalar va o'zgaruvchilarni yuklash uchun kengaytiradi .
+
+@mixinva  @include uslublar qismlarini qayta ishlatishni osonlashtiradi.
+
+@function SassScript ifodalarida ishlatilishi mumkin bo'lgan maxsus funktsiyalarni belgilaydi .
+
+@extend tanlovchilarga uslublarni bir-biridan meros qilib olish imkonini beradi.
+
+@at-root UNING ICHIDAGI USLUBLARNI CSS  hujjatining ildiziga qo'yadi .
+
+@error xato xabari bilan kompilyatsiya muvaffaqiyatsiz tugadi.
+
+@warn kompilyatsiyani to'liq to'xtatmasdan ogohlantirishni chop etadi.
+
+@debug nosozliklarni tuzatish maqsadida xabarni chop etadi.
+
+@if, @each, , kabi oqimni boshqarish qoidalari @forva @whileuslublar chiqarilishini yoki necha marta chiqarilishini nazorat qiladi.
+
+Sass, shuningdek, oddiy CSS at-qoidalari uchun maxsus xatti-harakatlarga ega : ular interpolatsiyani o'z ichiga olishi mumkin va ular uslub qoidalariga joylashtirilishi mumkin. Ulardan ba'zilari, @mediava @supportskabilar, SassScript-ni interpolyatsiyasiz to'g'ridan-to'g'ri qoidaning o'zida ishlatishga imkon beradi.
+*/
+.button {
+  border-radius: 3px;
+  padding: 8px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav ul li {
+  display: inline-block;
+  margin-left: -2px;
+  margin-right: 2em;
 }
 
 /*# sourceMappingURL=main.css.map */
