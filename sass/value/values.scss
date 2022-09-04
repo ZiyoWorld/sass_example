@@ -1,0 +1,76 @@
+// /* Numbers, which may or may not have units, like 12 or 100px.
+
+// Strings, which may or may not have quotes, like "Helvetica Neue" or bold.
+
+// Colors, which can be referred to by their hex representation or by name, like #c6538c or blue, or returned from functions, like rgb(107, 113, 127) or hsl(210, 100%, 20%).
+
+// Lists of values, which may be separated by spaces or commas and which may be enclosed in square brackets or no brackets at all, like 1.5em 1em 0 2em, Helvetica, Arial, sans-serif, or [col1-start].
+
+// A few more are specific to Sass:
+
+// The boolean values true and false.
+
+// The singleton null value.
+
+// Maps that associate values with keys, like ("background": red, "foreground": pink).
+
+// Function references returned by get-function() and called with call().
+// */
+// // $degrees-per-second: math.div(20deg, 1s);
+// // @debug 100;
+// // @debug 2px * 15px;
+
+// // @debug 4px * 6px; // 24px*px (read "square pixels")
+// // @debug math.div(5px, 2s); // 2.5px/s (read "pixels per second")
+
+// // // 3.125px*deg/s*em (read "pixel-degrees per second-em")
+// // @debug 5px * math.div(math.div(30deg, 2s), 24em); 
+
+
+// // @debug $degrees-per-second; // 20deg/s
+// // @debug math.div(1, $degrees-per-second); // 0.05s/deg
+// @use "sass:string";
+// @use "sass:meta";
+
+// @debug string.unquote(".widget:hover"); // .widget:hover
+// @debug string.quote(bold); // "bold";
+
+// // colors
+
+// @debug #f2ece4; // #f2ece4
+// @debug #b37399aa; // rgba(179, 115, 153, 67%)
+// @debug midnightblue; // #191970
+// @debug rgb(204, 102, 153); // #c69
+// @debug rgba(107, 113, 127, 0.8); // rgba(107, 113, 127, 0.8);
+// @debug hsl(228, 7%, 86%); // #dadbdf
+// @debug hsla(20, 20%, 85%, 0.7); // rgb(225, 215, 210, 0.7);
+
+// $sizes: 40px, 50px, 80px;
+
+// @each $size in $sizes {
+//   .icon-#{$size} {
+//     font-size: $size;
+//     height: $size;
+//     width: $size;
+//   }
+// }
+
+
+
+// @mixin syntax-colors($args...) {
+//   @debug meta.keywords($args);
+//   // (string: #080, comment: #800, variable: #60b)
+
+//   @each $name, $color in meta.keywords($args) {
+//     pre span.stx-#{$name} {
+//       color: $color;
+//     }
+//   }
+// }
+
+// @include syntax-colors(
+//   $string: #080,
+//   $comment: #800,
+//   $variable: #60b,
+// );
+

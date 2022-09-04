@@ -84,6 +84,6 @@ $dark-text: #d2e1dd;
   body.dark & {
     @include theme-colors($light-theme: false);
   }
-}
+} 
 
 

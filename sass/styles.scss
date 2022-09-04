@@ -3,6 +3,8 @@
 @use "./variables/variable.scss";
 @use "./at_rules/rulesall" as c;
 @use "./at_rules/function";
+@use "./value/values.scss";
+@use "./value/map.scss";
 // style.scss
 
 .button {
