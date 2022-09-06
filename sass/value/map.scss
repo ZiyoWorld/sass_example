@@ -1,5 +1,81 @@
 @use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
 $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
 @debug map.get($font-weights, "medium"); // 500
 @debug map.get($font-weights, "extra-bold"); // null
+
+$prefixes-by-browser: ("firefox": moz, "safari": webkit, "ie": ms);
+
+@mixin add-browser-prefix($browser, $prefix) {
+  $prefixes-by-browser: map.merge($prefixes-by-browser, ($browser: $prefix)) !global;
+}
+
+@include add-browser-prefix("opera", o);
+@debug $prefixes-by-browser;
+// ("firefox": moz, "safari": webkit, "ie": ms, "opera": o)
+
+$weights: ("light": 300, "medium": 500);
+
+@debug map.merge($weights, ("medium": 700));
+// ("light": 300, "medium": 700)
+
+$light-weights: ("lightest": 100, "light": 300);
+$heavy-weights: ("medium": 500, "bold": 700);
+
+@debug map.merge($light-weights, $heavy-weights);
+// ("lightest": 100, "light": 300, "medium": 500, "bold": 700)
+
+
+$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+@debug map.set($font-weights, "extra-bold", 900);
+// ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)
+@debug map.set($font-weights, "bold", 900);
+// ("regular": 400, "medium": 500, "bold": 900)
+
+@mixin avatar($size, $circle: false) {
+    width: $size;
+    height: $size;
+  
+    @if $circle {
+      border-radius: $size / 2;
+    }
+  }
+  
+  .square-av {
+    @include avatar(100px, $circle: false);
+  }
+  .circle-av {
+    @include avatar(100px, $circle: true);
+  }
+
+  @debug calc(400px + 10%); // calc(400px + 10%)
+  @debug calc(400px / 2); // 200px
+  @debug min(100px, calc(1rem + 10%)); // min(100px, 1rem + 10%)
+
+
+
+/// Return a copy of $list with all elements for which $condition returns `true`
+/// removed.
+@function remove-where($list, $condition) {
+  $new-list: ();
+  $separator: list.separator($list);
+  @each $element in $list {
+    @if not meta.call($condition, $element) {
+      $new-list: list.append($new-list, $element, $separator: $separator);
+    }
+  }
+  @return $new-list;
+}
+
+$fonts: Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+content {
+  @function contains-helvetica($string) {
+    @return string.index($string, "Helvetica");
+  }
+  font-family: remove-where($fonts, meta.get-function("contains-helvetica"));
+}

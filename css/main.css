@@ -141,11 +141,11 @@ span.email-salom {
 }
 
 .pulse {
-  animation-name: inline-u62xbvy;
+  animation-name: inline-uhzzwed;
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }
-@keyframes inline-u62xbvy {
+@keyframes inline-uhzzwed {
   from {
     background-color: yellow;
   }
@@ -246,6 +246,35 @@ input.zip {
 body.dark .banner {
   background-color: #6b717f;
   color: #d2e1dd;
+}
+
+.square-av {
+  width: 100px;
+  height: 100px;
+}
+
+.circle-av {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+content {
+  font-family: Tahoma, Geneva, Arial, sans-serif;
+}
+
+.item3 {
+  grid-row: span 0.4285714286;
+}
+
+.item3 {
+  grid-row: span 3 / 7;
+}
+
+:root {
+  --accent-color-wrong: $accent-color;
+  --accent-color-right: #fbbc04;
+  --font-family-monospace: Menlo, Consolas, "Courier New", monospace;
 }
 
 .button {

@@ -1,0 +1,15 @@
+$accent-color: #fbbc04;
+@use "sass:meta";
+
+$font-family-monospace: Menlo, Consolas, "Courier New", monospace;
+
+:root {
+  // WRONG, will not work in recent Sass versions.
+  --accent-color-wrong: $accent-color;
+  // RIGHT, will work in all Sass versions.
+  --accent-color-right: #{$accent-color};
+  --font-family-monospace: #{meta.inspect($font-family-monospace)};
+}
+
+/// JavaScript API
+/// 
